@@ -1,7 +1,29 @@
+// Interface es un componente exclusivo de TypeScript
+//
+// Permite establecer una estructura formal de un objeto, un "contrato" que se debe cumplir con las propiedades específicas:
 
-const ironman = {
-  firstName: "Mike",
-  lastName: "Morales",
+// Esto ayuda a los desarrolladores a crear objetos con los tipos de datos apropiados y evitar errores de código más adelante:
+
+interface Person {
+  firstName: string;
+  lastName: string;
+  age: number;
+
+  // Tambien podemos establecer propiedades opcionales mediante el ?
+  // De esta forma, el objeto tiene la decision de implementar esta propiedad
+  address?: Address;
+}
+
+// Podemos agregar interfaces dentro de otra como una forma más concisa de establecer propiedades anidadas
+interface Address {
+  postalCode: string;
+  city: string;
+}
+
+
+const ironman: Person = {
+  firstName: "Tony",
+  lastName: "Stark",
   age: 45,
 
   address: {
@@ -10,21 +32,4 @@ const ironman = {
   }
 }
 
-// APUNTA AL MISMO ESPACIO EN MEMORIA (Problema común):
-// const spiderman = ironman;
-
-// En cambio, se tienen las sig. soluciones
-// Se puede usar el operador "spread" (...) para hacer una "copia" del objeto
-// Sin embargo, solamente se realiza una copia superficial: Si existen objetos anidados, son susceptibles a mutaciones accidentales:
-// const spiderman = {...ironman};
-
-// Existe "structuredClone" que clona el objeto "a profunidad" (deep-clone)
-const spiderman = structuredClone(ironman);
-
-spiderman.firstName = "Peter";
-spiderman.lastName = "Parker";
-spiderman.age = 22;
-spiderman.address.postalCode = 'XYZ941';
-
-
-console.log(ironman, spiderman);
+console.log(ironman);
