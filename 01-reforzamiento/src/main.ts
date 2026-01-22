@@ -1,6 +1,6 @@
 import './style.css'
 
-import './bases/07-array-destructuring';
+import './bases/ejercicios/useState';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
