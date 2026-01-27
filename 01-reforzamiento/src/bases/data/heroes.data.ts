@@ -1,4 +1,4 @@
-interface Hero {
+export interface Hero {
   id: number;
   name: string;
   owner: Owner;
@@ -43,3 +43,10 @@ const heroes: Hero[] = [
     owner: Owner.DC,
   }
 ];
+
+// Ejemplo de exportación por nombre:
+
+export { heroes }
+
+// Ejemplo de exportación por defecto:
+// export default heroes

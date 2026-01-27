@@ -1,6 +1,6 @@
 import './style.css'
 
-import './bases/ejercicios/useState';
+import './bases/08-import-export';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
