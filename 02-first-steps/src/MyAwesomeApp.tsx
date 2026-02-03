@@ -7,6 +7,9 @@
     innecesaria:
 */
 
+import type { CSSProperties } from "react";
+import { renderToPipeableStream } from "react-dom/server";
+
 const firstName = "Miguel";
 const lastName = "Dante";
 
@@ -16,6 +19,16 @@ const objeto = {
   "nombre": "objeto",
   tipo: "objeto"
 };
+
+const isActive = true;
+
+const miEstilo: CSSProperties = {
+  backgroundColor: "#81dba8",
+  borderRadius: "20px",
+  // TIP: Puedes hacer uso de condiciones para establecer valores:
+  color: isActive ? 'blue' : 'red',
+}
+
 
 export function MyAwesomeApp() {
   return (
@@ -36,6 +49,20 @@ export function MyAwesomeApp() {
 
       {/* Existe una forma de imprimir el objeto: Usando JSON.stringify: */}
       <p> {JSON.stringify(objeto)} </p>
+
+
+      {/* - TEMA: 40. Uso de propiedades / estilos CSS en React:
+      El uso de estilos CSS ocupa el uso de React.CSSProperties */}
+
+      {/* - NOTA: NO ES HTML, sino JSX: Tienen diferentes reglas en cuanto
+        a los atributos.
+        Aqui, "style" se adminstra mediante un objeto, no un string */}
+      <p
+        style={miEstilo}
+      >
+        ¡Este parrafo tiene estilo!
+      </p>
+
     </>
   )
 
