@@ -5,10 +5,10 @@ export function FirstStepsApp() {
 			<>
 					<h1>Carro de Compras 🛒</h1>
 					
-					<ItemCounter/>
-					<ItemCounter/>
-					<ItemCounter/>
-					<ItemCounter/>
+					<ItemCounter nombre="Nintendo Switch" cantidad={1}/>
+					<ItemCounter nombre="PS5" cantidad={1}/>
+					<ItemCounter nombre="Agua"/>
+					<ItemCounter nombre="Coca-Cola" cantidad={5}/>
 			</>
 	);
 }
