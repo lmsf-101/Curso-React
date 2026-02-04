@@ -1,4 +1,3 @@
-import React from 'react'
 
 interface Producto {
   nombre: string,
@@ -11,6 +10,12 @@ interface Producto {
 // Como buena practica, se pueden emplear interfaces para indiciar
 // que tipo de parametros / datos se esperan introducir:
 export const ItemCounter = ({ nombre, cantidad }: Producto) => {
+
+  const enClick = () => {
+    console.log("Pulsado mas!");
+    console.log(`Producto : ${nombre}`);
+  }
+
   return (
     <section style={{
       display: 'flex',
@@ -26,7 +31,14 @@ export const ItemCounter = ({ nombre, cantidad }: Producto) => {
           {nombre}
         </span>
 
-        <button>+1</button>
+        <button
+        // Ejemplo de uso de evento dentro de componentes React:
+          onMouseEnter={() => {
+            console.log(`Boton Hover en Producto : ${nombre}`)
+          }}
+
+          onClick={enClick}
+        >+1</button>
         <span>{cantidad ? cantidad : 10}</span>
         <button>-1</button>
 
