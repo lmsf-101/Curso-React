@@ -1,0 +1,17 @@
+.item-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 15px;
+    border: 1px solid red;
+    font-family: serif;
+}
+
+.item-text {
+    width: 220px;
+    margin-right: 20px;
+}
+
+.verde {
+    color: green;
+}

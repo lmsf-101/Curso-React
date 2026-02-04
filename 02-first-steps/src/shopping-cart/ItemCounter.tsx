@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+// Importación de archivo CSS para estilos estáticos
+// import './ItemCounter.css'
+
+// Otra forma de utilizar CSS es mediante modulos:
+import styles from './ItemCounter.module.css';
+
 interface Producto {
   nombre: string,
   cantidad?: number // El signo de interrogación hace que la propiedad sea opcional
@@ -25,16 +31,9 @@ export const ItemCounter = ({ nombre, cantidad = 1 }: Producto) => {
   }
 
   return (
-    <section style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: 15,
-      margin: 15,
-      border: '1px solid red',
-      fontFamily: 'serif'
-    }}>
-        <span style={{
-          marginRight: 20
+    <section className={styles['item-row']}>
+        <span className={styles['item-text']} style={{
+          color: count === 1 ? 'blue' : 'black',
         }}>
           {nombre}
         </span>
