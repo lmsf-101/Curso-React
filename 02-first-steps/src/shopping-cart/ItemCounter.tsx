@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 interface Producto {
   nombre: string,
@@ -9,11 +10,18 @@ interface Producto {
 
 // Como buena practica, se pueden emplear interfaces para indiciar
 // que tipo de parametros / datos se esperan introducir:
-export const ItemCounter = ({ nombre, cantidad }: Producto) => {
+export const ItemCounter = ({ nombre, cantidad = 1 }: Producto) => {
 
-  const enClick = () => {
-    console.log("Pulsado mas!");
-    console.log(`Producto : ${nombre}`);
+  // USO DE HOOKS (useState)
+  // Mediante desestructuración de arreglo:
+  const [ count, setCount ] = useState(cantidad);
+
+  const handleAdd = () => setCount(count + 1);
+
+  const handleSubtract = () => {
+    // Si esta hasta el minimo, regresa inmediatamente:
+    if (count === 1) return; 
+    setCount(count - 1);
   }
 
   return (
@@ -31,16 +39,9 @@ export const ItemCounter = ({ nombre, cantidad }: Producto) => {
           {nombre}
         </span>
 
-        <button
-        // Ejemplo de uso de evento dentro de componentes React:
-          onMouseEnter={() => {
-            console.log(`Boton Hover en Producto : ${nombre}`)
-          }}
-
-          onClick={enClick}
-        >+1</button>
-        <span>{cantidad ? cantidad : 10}</span>
-        <button>-1</button>
+        <button onClick={handleAdd}>+1</button>
+        <span>{count}</span>
+        <button onClick={handleSubtract}>-1</button>
 
     </section>
   )
