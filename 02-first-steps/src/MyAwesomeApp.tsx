@@ -32,11 +32,11 @@ const miEstilo: CSSProperties = {
 
 export function MyAwesomeApp() {
   return (
-    <>
+    <div>
       {/* - TIP: Insertar variables en React
             Utilizan llaves {} para introducir variables en la aplicación */}
       <h1> {firstName} </h1>
-      <h3> {lastName} </h3>
+      <h2> {lastName} </h2>
       
       {/* - TIP: Uso de sintaxis JS 
       Las llaves nos permite ejecutar expresiones de JS
@@ -63,7 +63,7 @@ export function MyAwesomeApp() {
         ¡Este parrafo tiene estilo!
       </p>
 
-    </>
+    </div>
   )
 
 }

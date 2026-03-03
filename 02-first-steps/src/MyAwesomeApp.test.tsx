@@ -20,14 +20,14 @@ describe('MyAwesomeApp Component', () => {
 
         // Validar si exsite h1 y h3 dentro del componente
         const h1 = con.querySelector("h1");
-        const h3 = con.querySelector("h3");
+        const h2 = con.querySelector("h2");
         expect(h1?.innerHTML).toContain("Miguel");
-        expect(h3?.innerHTML).toContain("Dante");
+        expect(h2?.innerHTML).toContain("Dante");
     })
 
     // Revisar lo mismo, pero ahora con Screen
     test('Should Render First and Last Name - Screen', () => {
-        
+
         render(<MyAwesomeApp />);
         // Uso de screen para ver la renderización
         screen.debug();
@@ -43,5 +43,18 @@ describe('MyAwesomeApp Component', () => {
         // const h1 = screen.getByTestId('first-name-title');
 
         expect(h1.innerHTML).toContain('Miguel');
+    })
+
+    /* NOTA: Para poder manejar o verificar que un componente
+        se encuentre en un estado / una estructura apropiada
+        Se puede hacer uso de los llamados Snapshots */
+    test('Shoud Match Snapshot', () => {
+
+        const { container } = render(<MyAwesomeApp />);
+
+        expect(container).toMatchSnapshot();
+
+        /* Esto generara una carpeta automatica de Snapshots
+        '__snapshots__' que sera administrada por Vite para administrar los estados del componente */
     })
 })

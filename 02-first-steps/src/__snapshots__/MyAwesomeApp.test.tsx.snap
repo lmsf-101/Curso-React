@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MyAwesomeApp Component > Shoud Match Snapshot 1`] = `
+<div>
+  <div>
+    <h1>
+       
+      Miguel
+       
+    </h1>
+    <h2>
+       
+      Dante
+       
+    </h2>
+    <p>
+       
+      Manzana - Bisquet - Peras - Aguacate
+       
+    </p>
+    <p>
+       
+      {"nombre":"objeto","tipo":"objeto"}
+       
+    </p>
+    <p
+      style="background-color: rgb(129, 219, 168); border-radius: 20px; color: blue;"
+    >
+      ¡Este parrafo tiene estilo!
+    </p>
+  </div>
+</div>
+`;
