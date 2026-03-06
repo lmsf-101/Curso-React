@@ -74,4 +74,37 @@ describe('ItemCounter', () => {
     
   })
 
+  // Verificando el estilo particular de un elemento (si es azul, en este caso):
+  test("Should show item-text blue when count is 1", () => {
+
+    const quantity = 1;
+    const name = "Test item";
+
+    render(<ItemCounter nombre={name} cantidad={quantity} />);
+
+    const itemTextElement = screen.getByText(name);
+
+    // Para recuperar el estilo del elemento, simplemente invoca el
+    // atributo de style:
+
+    // Para atrapar un atributo del estilo, especificalo como atributo
+    // de style
+    console.log(itemTextElement.style.color);
+
+    expect(itemTextElement.style.color).toBe("blue");
+  })
+
+  // Prueba similar, pero ahora evaluando si el elemento es negro si es dif. a 1:
+  test("Should show item-text with black color when count is different than 1", () => {
+
+    const quantity = 2;
+    const name = "Test item";
+
+    render(<ItemCounter nombre={name} cantidad={quantity} />);
+
+    const itemTextElement = screen.getByText(name);
+
+    expect(itemTextElement.style.color).toBe("black");
+  })
+
 })
