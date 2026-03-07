@@ -2,7 +2,7 @@
 // Debe tener al menos una prueba unitaria
 
 import { describe, expect, test } from 'vitest'
-import { add, multiply, subtract } from './math.helpers'
+import { add, divide, multiply, subtract } from './math.helpers'
 
 //  test ('Descripción de prueba', () => {**PRUEBA A EJECUTAR**})
 
@@ -82,6 +82,31 @@ describe('Pruebas Multiply', () => {
         const result = multiply(a, b);
     
         expect(result).toBe(108);
+    
+    })
+})
+
+describe('Pruebas Division', () => {
+
+    test('10 / 5 = 2', () => {
+        
+        const a = 10;
+        const b = 5;
+    
+        const result = divide(a, b);
+    
+        expect(result).toBe(a / b);
+    
+    })
+
+    test('10 / 8 = 1.25', () => {
+        
+        const a = 10;
+        const b = 8;
+    
+        const result = divide(a, b);
+    
+        expect(result).toBe(1.25);
     
     })
 })
