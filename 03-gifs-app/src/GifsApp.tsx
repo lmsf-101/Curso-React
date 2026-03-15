@@ -1,5 +1,7 @@
-import React from 'react'
 import { mockGifs } from './mock-data/gifs.mock'
+import { CustomHeader } from './shared/components/CustomHeader'
+import { SearchBar } from './shared/components/SearchBar'
+import { PreviousSearches } from './gifs/components/PreviousSearches'
 
 // Idealmente, se genera un componente con el nombre de la misma aplicacion
 // Para uso de elementos globales (estilos, routers, etc)
@@ -7,28 +9,23 @@ import { mockGifs } from './mock-data/gifs.mock'
 export const GifsApp = () => {
   return (
     <>
+      {/* Para mayor organizacion de nuestro proyecto, separamos cada
+      componente de la aplicacion */}
+
       {/* Header */}
-      <div>
-        <h1>Buscador de Gifs</h1>
-        <h4>Busca tus Gifs perfectos aqui:</h4>
-      </div>
+      <CustomHeader title='App de Gifs' 
+      subtitle='Bienvenido a la App de Gifs' 
+      />
 
 
       {/* Search function */}
-      <div className='search-container'>
-        <input type='text' placeholder='Busca un GIF aqui' />
-        <button>Buscar</button>
-      </div>
+      {/* SearchBar */}
+      <SearchBar placeholder='Busca tus GIFS aqui'/>
 
       {/* Historial de busquedas */}
-      <div className='history-container'>
-        <h2>Historial de Busquedas</h2>
-        <ul className='history-list'>
-          <li>Mario</li>
-          <li>Luigi</li>
-          <li>John Doe</li>
-        </ul>
-      </div>
+      {/* PreviousSearches */}
+      <PreviousSearches items={['Mario', 'Luigi', 'Goku']} />
+
 
       {/* GIFS */}
       <div className='gifs-container'>
