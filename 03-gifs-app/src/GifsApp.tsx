@@ -17,6 +17,13 @@ export const GifsApp = () => {
   const handleTermClicked = (term: string) => {
     console.log( { term } )
   };
+  
+  // Como practica, es importante nombrar "handle" a funciones
+  // cuando administramos valores durante un evento / accion
+  // en los componentes
+  const handleSearch = (query: string) => {
+    console.log(`Query : ${query}`);
+  }
 
   return (
     <>
@@ -32,7 +39,7 @@ export const GifsApp = () => {
 
       {/* Search function */}
       {/* SearchBar */}
-      <SearchBar placeholder='Busca tus GIFS aqui'/>
+      <SearchBar placeholder='Busca tus GIFS aqui' onQuery={ handleSearch }/>
 
       {/* Historial de busquedas */}
       {/* PreviousSearches */}
