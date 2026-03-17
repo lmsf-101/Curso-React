@@ -22,7 +22,20 @@ export const GifsApp = () => {
   // cuando administramos valores durante un evento / accion
   // en los componentes
   const handleSearch = (query: string) => {
+    // TAREA: Ver busquedas previas
     console.log(`Query : ${query}`);
+    
+    // 1. Convertir el query a minúsculas y eliminar espacios en blanco
+    query = query.toLowerCase().trim();
+
+    // 2. Validar que el query no esté vacío
+    // 3. Evitar búsquedas duplicadas verificando si el término ya existe en previousTerms ( si existe, no hacer nada )
+    if (query.length === 0 || previousTerms.includes(query)) return;
+
+    // 4. Actualizar previousTerms agregando el nuevo término al inicio y limitando a 8 elementos máximo, es decir no puede ser un arreglo de más de 8.
+    setPreviousTerms( (prev) => {
+      return [query, ...prev].slice(0, 8)
+    });
   }
 
   return (

@@ -22,7 +22,7 @@ export const SearchBar = ( {placeholder = 'Buscar', onQuery}: SearchBarProps) =>
       clearTimeout(timeOutID);
     }
 
-  }, [query, onQuery])
+  }, [query])
 
   const handleSearch = () => {
     onQuery(query);

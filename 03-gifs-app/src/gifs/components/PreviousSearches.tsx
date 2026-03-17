@@ -13,10 +13,10 @@ export const PreviousSearches: FC<PreviousSearchesProps> = ( {items, onItemClick
       <ul className='history-list'>
         {
           items.map((item) => (
-          <li key={item}
-            onClick={() => onItemClick(item)}
-          >{item}</li>
-        ))
+            <li key={item}
+              onClick={() => onItemClick(item)}
+            >{item}</li>
+          ))
         }
       </ul>
     </div>
