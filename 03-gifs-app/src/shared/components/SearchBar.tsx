@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent } from "react";
+import { useEffect, useState, type KeyboardEvent } from "react";
 
 interface SearchBarProps {
   placeholder?: string
@@ -10,6 +10,19 @@ export const SearchBar = ( {placeholder = 'Buscar', onQuery}: SearchBarProps) =>
   // de busqueda que ingresa el usuario, es necesario manejarlo
   // mediante useState
   const [query, setQuery] = useState('');
+
+  // Empiezo de useEffect para aplicar el patron de Debouncer (Retrasar la)
+  // ejecución hasta que el usuario deje de escribir su busqueda:
+  useEffect(() => {
+    const timeOutID = setTimeout(() => {
+        onQuery(query);
+    }, 700)
+
+    return () => {
+      clearTimeout(timeOutID);
+    }
+
+  }, [query, onQuery])
 
   const handleSearch = () => {
     onQuery(query);
