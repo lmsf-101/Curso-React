@@ -1,17 +1,20 @@
-import { mockGifs } from './mock-data/gifs.mock'
 import { CustomHeader } from './shared/components/CustomHeader'
 import { SearchBar } from './shared/components/SearchBar'
 import { PreviousSearches } from './gifs/components/PreviousSearches'
 import { GifList } from './gifs/components/GifList'
 import { useState } from 'react'
 import { getGifsByQuery } from './gifs/actions/get-gifs-by-query.action'
+import type { Gif } from './gifs/interfaces/gif.interface'
 
 // Idealmente, se genera un componente con el nombre de la misma aplicacion
 // Para uso de elementos globales (estilos, routers, etc)
 
 export const GifsApp = () => {
+  
+  const [gifs, setGifs] = useState<Gif[]>([])
+
   /* Uso de Hooks para administrar el historial de busquedas realizadas */
-  const [previousTerms, setPreviousTerms] = useState(['mario'])
+  const [previousTerms, setPreviousTerms] = useState<string[]>([])
 
   // Ejemplo de como podemos enviar funciones entre componentes (padre y hijo)
   // En este caso, mandar esta funcion hacia PreviousSearches:
@@ -39,7 +42,8 @@ export const GifsApp = () => {
     });
 
     const gifs = await getGifsByQuery(query);
-    console.log({ gifs });
+
+    setGifs(gifs)
   }
 
   return (
@@ -64,7 +68,7 @@ export const GifsApp = () => {
 
       {/* GIFS */}
       {/* GifList: Props => gifs: Gif[] */}
-      <GifList gifs={mockGifs} />
+      <GifList gifs={gifs} />
     </>
   )
 }
