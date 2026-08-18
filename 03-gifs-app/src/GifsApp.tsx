@@ -4,6 +4,7 @@ import { SearchBar } from './shared/components/SearchBar'
 import { PreviousSearches } from './gifs/components/PreviousSearches'
 import { GifList } from './gifs/components/GifList'
 import { useState } from 'react'
+import { getGifsByQuery } from './gifs/actions/get-gifs-by-query.action'
 
 // Idealmente, se genera un componente con el nombre de la misma aplicacion
 // Para uso de elementos globales (estilos, routers, etc)
@@ -21,7 +22,7 @@ export const GifsApp = () => {
   // Como practica, es importante nombrar "handle" a funciones
   // cuando administramos valores durante un evento / accion
   // en los componentes
-  const handleSearch = (query: string) => {
+  const handleSearch = async (query: string) => {
     // TAREA: Ver busquedas previas
     console.log(`Query : ${query}`);
     
@@ -36,6 +37,9 @@ export const GifsApp = () => {
     setPreviousTerms( (prev) => {
       return [query, ...prev].slice(0, 8)
     });
+
+    const gifs = await getGifsByQuery(query);
+    console.log({ gifs });
   }
 
   return (
