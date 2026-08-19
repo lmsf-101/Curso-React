@@ -2,6 +2,9 @@ import { useState } from "react";
 import type { Gif } from "../interfaces/gif.interface";
 import { getGifsByQuery } from "../actions/get-gifs-by-query.action";
 
+// Funcionalidad cache para regresar gifs previamente consultados
+const gifsCache: Record<string, Gif[]> = {}
+
 export const useGifs = () => {
   
   const [gifs, setGifs] = useState<Gif[]>([])
@@ -11,8 +14,17 @@ export const useGifs = () => {
 
   // Ejemplo de como podemos enviar funciones entre componentes (padre y hijo)
   // En este caso, mandar esta funcion hacia PreviousSearches:
-  const handleTermClicked = (term: string) => {
-    console.log( { term } )
+  const handleTermClicked = async (term: string) => {
+
+    if (gifsCache[term]) {
+      console.log(`Using cached images for : ${term}`);
+      setGifs(gifsCache[term]);
+      return;
+    }
+
+
+    const gifs = await getGifsByQuery(term);
+    setGifs(gifs);
   };
   
   // Como practica, es importante nombrar "handle" a funciones
@@ -36,7 +48,12 @@ export const useGifs = () => {
 
     const gifs = await getGifsByQuery(query);
 
-    setGifs(gifs)
+    setGifs(gifs);
+
+    // Guardar los gifs en el cache
+    gifsCache[query] = gifs;
+
+    console.log(gifsCache);
   }
 
   return {

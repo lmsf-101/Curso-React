@@ -5,7 +5,7 @@ import type { Gif } from "../interfaces/gif.interface";
 import { giphyApi } from "../api/giphy.api";
 
 
-export const getGifsByQuery = async(query: string): Promise<Gif[]> => {
+export const getGifsByQuery = async (query: string): Promise<Gif[]> => {
 
 	const response = await giphyApi<GiphyResponse>('/search', {
 		params: {
