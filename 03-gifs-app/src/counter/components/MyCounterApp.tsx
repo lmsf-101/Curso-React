@@ -1,23 +1,8 @@
-import { useState } from "react";
-
+import { useCounter } from "../hooks/useCounter"
 
 export const MyCounterApp = () => {
 
-  // Lógica de suma, resta, y reset, a resolver con el uso de Custom Hooks...
-  const [counter, setCounter] = useState(5);
-
-
-  const handleAdd = () => {
-    setCounter(counter + 1);
-  }
-
-  const handleSubtract = () => {
-    setCounter((prevState) => prevState - 1);
-  }
-
-  const handleReset = () => {
-    setCounter(5);
-  }
+  const {counter, handleAdd, handleReset, handleSubtract} = useCounter();
 
   return (
     <div style={{
